@@ -16,6 +16,8 @@ urlpatterns = [
     path('sofia', views.sofia, name='sofia'),  
     path('artistas', views.artistas, name='artistas'),
     path('productos', views.productos, name='productos'),
+
+    #crud
     path('formulariolist', views.formulariolist, name='formulariolist'),
     path('formulariocreate', views.formulariocreate, name='formulariocreate'),
     path('formulariomod', views.formulariomod, name='formulariomod'),

@@ -1,10 +1,10 @@
 from django.forms import ModelForm
 from django import forms
-from .models import user
+from .models import usuario
 
-class ServiciosForm(forms.ModelForm):
+class usuariosform(forms.ModelForm):
     class Meta:
-        model = user 
+        model = usuario 
         #fields = ['ID', 'Nombre', 'Encargado', 'Tipo de Servicio', 'fecha_creacion'] 
    
         fields = '__all__' 

@@ -1,7 +1,5 @@
-from distutils.command.upload import upload
-from pyexpat import model
+from typing import Any, Dict, Tuple
 from django.db import models
-from typing import Any,Dict, Tuple
 
 
 # Create your models here.

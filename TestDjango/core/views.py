@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import usuario
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.contrib.auth import authenticate, login, logout
+from .forms import usuariosform
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render,get_object_or_404,redirect
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.db import IntegrityError
 
 
 
@@ -32,20 +36,19 @@ def productos(request):
 def formulariolist(request):
     artistas = usuario.objects.all()
     messages.success(request, '¡artistas Listados!')
-    return render(request, 'formulariolist.html', {'user': usuario})
+    return render(request, 'formulariolist.html')
+
+
 
 
 def formulariocreate(request):
-    if request.method == 'POST':
-        ID_artista = request.POST['ID_artista']
-        nombre_artista = request.POST['nombre_artista']
-        descripcion = request.POST['descripcion']
-        img = request.FILES['img']
-        artistas = usuario(ID_artista=ID_artista, nombre_artista=nombre_artista, descripcion=descripcion, img=img)
-        artistas.save()
-        messages.success(request, '¡Artista Registrado!')
-        return redirect('formulariolist')
-    return render(request, 'formulariocreate.html')
+    usuario = usuariosform(request.POST or None, request.FILES or None)
+    if usuario.is_valid():
+       usuario.save()
+       return redirect('formulariocreate')
+    return render(request, "formulariocreate.html", {"artistas": artistas})
+
+
 
 
 def formulariomod(request):
@@ -61,12 +64,10 @@ def formulariomod(request):
     return render(request, 'formulariomod.html')
 
 
-def formulariodelete(request):
-    artistas = usuario.objects.all()
-    if request.method == 'POST':
-        ID_usuario  = request.POST['artista_id']
-        artista = usuario.objects.get(id=ID_usuario )
-        artista.delete()
-        messages.success(request, '¡Artista Eliminado!')
-        return redirect('formulariolist')
-    return render(request, 'formulariodelete', {'artistas': usuario})
+
+
+def formulariodelete(request, ID_usuario):
+    articulos = usuario.objects.get(ID_usuario=ID_usuario)
+    articulos.delete()
+    messages.success(request, '¡Artículo Eliminado!')
+    return redirect(request, 'formulariodelete.html')
