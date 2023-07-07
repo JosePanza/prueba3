@@ -1,0 +1,149 @@
+{% extends "./base.html" %}
+
+{% block title %} Pagina Principal {% endblock %}
+
+{% block body %}
+{% load static %}
+
+<!-- Bootstrap Carousel -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+       
+      <img src="{% static 'img/013.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/014.png' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-flex justify-content-center align-items-center">
+          <h1 class="display col-lg-6 col-md-10">Collar más vendido de la semana.</h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/016.png' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-flex justify-content-center align-items-center">
+          <h1 class="display">Pasteles más pedidos de la semana.</h1>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+    <!-- Contenido 1 -->
+    <section class="container">
+    
+      <div class="row">
+        <div class="col-12 text-center">
+          <h2 clas="text-warning text-uppercase h6"><br><br>¿Quiénes somos?</h2>
+          <h3 class="text-capitalize">¡Bienvenidos al mundo del arte plástico!</h3>
+          <p class="text-muted">
+            Somos un grupo de talentosos artistas dedicados a diferentes disciplinas, 
+            como escultura, orfebrería, tejidos y pintura. <br>
+            Nuestro objetivo es exhibir y vender nuestras creaciones,
+            y para lograrlo, hemos lanzado nuestra página web, "Grupo Cero". En ella, encontrarás una amplia selección 
+            de productos únicos y cautivadores disponibles para su compra.<br> 
+            Explora nuestra galería en línea y maravíllate 
+            con las esculturas, piezas de orfebrería, tejidos y pinturas que hemos creado con pasión y maestría. 
+            Cada artista tiene su sección dedicada en el sitio, donde podrás conocer más sobre ellos y su trayectoria artística. 
+            Contáctanos si tienes preguntas o estás interesado en colaborar. Además, mantente actualizado a
+            través de nuestro blog con noticias sobre eventos, exposiciones y lanzamientos.<br><br>
+            <h3 class="text-capitalize">¡Te invitamos a disfrutar <br>y 
+              dejarte inspirar por la creatividad de nuestros <br>talentosos artistas!<h3>
+  
+          
+          </p>
+      
+      </div>
+      <img src="{% static 'img/separador2.png' %}" alt=""/>
+      </div>
+      </section>
+  
+      <!-- TARJETAS -->
+      <section class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-12 text-center">
+            <h2 class="text-warning text-uppercase h6">Destacados</h2>
+            <h3 class="text-capitalize">Algunos de nuestros artistas</h3>
+          </div>
+  
+          <!--Tarjeta 1-->
+          <article class="col-md-6 col-lg-4 card-effect">
+            <div class="card">
+              <img src="{% static 'img/014.png' %}" alt="Raiting" class="card-img card-img-filter"/>
+              <div class="card-img-overlay text-white d-flex flex-column justify-content-center text-center">
+                <h4>Sofía Palma</h4>
+                <p>
+                  Sofía es una excelente creadora de peluches tejidos.
+                </p>
+             <a href="{% url 'sofia'%}" class="text-reset">Leer más.</a>
+              </div>
+            </div>
+          </article>
+  
+          <!--Tarjeta 2-->
+          <article class="col-md-6 col-lg-4 card-effect">
+            <div class="card">
+              <img src="{% static 'img/015.png' %}" alt="Raiting" class="card-img card-img-filter"/>
+              <div class="card-img-overlay text-white d-flex flex-column justify-content-center text-center">
+                <h4>Juan Carlos Peña</h4>
+                <p>
+                  Don Juan es un excelente creador de anillos...
+                </p>
+             <a href="{% url 'juan'%}" class="text-reset">Leer más.</a>
+              </div>
+            </div>
+          </article>
+  
+          
+          <!--Tarjeta 3-->
+          <article class="col-md-6 col-lg-4 card-effect mt-md-4 mt-lg-0">
+            <div class="card">
+              <img src="{% static 'img/016.png' %}" alt="Raiting" class="card-img card-img-filter"/>
+              <div class="card-img-overlay text-white d-flex flex-column justify-content-center text-center">
+                <h4>Martina Hernriquez</h4>
+                <p>
+                  Martina es una excelente escultora...
+                </p>
+             <a href="{% url 'martina'%}" class="text-reset">Leer más.</a>
+              </div>
+            </div>
+          </article>
+          <img src="{% static 'img/separador2.png' %}" alt=""/>
+        </div>
+     </section>
+  <!-- Comentarios -->
+    <section class="comments"> 
+    
+    <div class="container">
+      <div class="row">
+      <blockquote class="col-12 text-dark text-center">
+        <br>
+        <br>
+        <img src="{% static 'img/057.png' %}" alt="Marcella Panza"  class="comments__img"/>
+        <br>
+        <br>
+        <p>Llevo mucho tiempo siguiendo a los artistas de esta página, 
+          estoy muy agradecida que tengan una web donde poder ver sus productos y llegar con más fácilidad a ellos.</p>
+          <footer class="blockquote-footer text-grey">
+            <cite>Marcella Panza</cite>
+          </footer>
+  
+      </blockquote>
+    </div>
+    </div>
+  
+  </section>
+  
+  <br><br>
+  {% endblock %}

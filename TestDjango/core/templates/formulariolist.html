@@ -1,0 +1,29 @@
+{% extends "./base.html" %}
+
+
+{% block title %}Lista {% endblock %}
+
+{% block body %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de artistas</title>
+</head>
+<br>
+    <h1>Lista de artistas</h1>
+    <ul>
+        {% for i in usuario %}
+        <li>{{ usuario.ID_usuario }} - {{ usuario.nombre_usuario }} - {{ usuario.descripcion }} - {{ usuario.img }}</li>
+        {% endfor %}
+    </ul>
+    <br></br>
+    <a href="{% url 'formulariolist'%}" class="btn btn-primary">Lista</a>
+    <a href="{% url 'formulariocreate'%}" class="btn btn-primary">Agregar</a>
+    <a href="{% url 'formulariomod'%}" class="btn btn-primary">Editar</a>
+    <a href="{% url 'formulariodelete'%}" class="btn btn-primary">Eliminar</a>
+</body>
+</html>
+
+{% endblock  %}

@@ -1,0 +1,31 @@
+{% extends "./base.html" %}
+
+{% block title %} crear {% endblock %}
+
+{% block body %}
+{% load static %}
+
+<!DOCTYPE html>
+<br>
+<head>
+    <title>Agregar artista</title>
+</head>
+<body>
+    <h1>Agregar artista</h1>
+    <form method="post" action="{% url 'formulariocreate' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br></br>
+        <label for="ID_artista">ID artista:</label>
+        <input type="text" name="ID_artista" required><br></br>
+        <label for="nombre_artista">Nombre Artista:</label>
+        <input type="text" name="nombre_artista" required><br></br>
+        <label for="descripcion">Descripcion:</label>
+        <input type="text" name="descripcion" required><br></br>
+        <label for="img">imagen:</label>
+        <input type="file" name="img" required><br></br>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</body>
+</html>
+
+{% endblock %}
