@@ -51,23 +51,27 @@ def formulariocreate(request):
 
 
 
-def formulariomod(request):
-    artistas = usuario.objects.all()
-    if request.method == 'POST':
-        artistas = usuario.objects.get(id=request.POST['artista_id'])
-        artistas.nombre_usuario = request.POST['nombre_artista']
-        artistas.descripcion = request.POST['descripcion']
-        artistas.img = request.POST['img']
-        artistas.save()
-        messages.success(request, '¡Artista Actualizado!')
-        return redirect('formulariolist')
-    return render(request, 'formulariomod.html')
+
+
+def formulariomod(request, ID_usuario):
+    artistas = usuario.objects.get(ID_usuario=ID_usuario)
+    usuario = usuariosform(request.POST or None, request.FILES or None, instance=artistas)
+    if usuario.is_valid() and request.method == 'POST':
+        usuario.save()
+        return redirect('formulariomod')
+    return render(request, "formulariomod.html", {"formulario": artistas})
 
 
 
 
 def formulariodelete(request, ID_usuario):
-    articulos = usuario.objects.get(ID_usuario=ID_usuario)
-    articulos.delete()
+    artistas = usuario.objects.get(ID_usuario=ID_usuario)
+    usuario.delete()
     messages.success(request, '¡Artículo Eliminado!')
     return redirect(request, 'formulariodelete.html')
+
+def borrarservicio(request, ID_servicio):
+    servicios = Servicios.objects.get(ID_servicio = ID_servicio)
+    servicios.delete()
+    messages.success(request, '¡Servicio Eliminado!')
+    return redirect('gestionser')
