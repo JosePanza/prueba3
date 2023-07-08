@@ -24,6 +24,10 @@ urlpatterns = [
     path('formulariodelete/', views.formulariodelete, name='formulariodelete'),
 
     
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('registro/', views.registro_view, name='registro'),
+    path('accounts/profile/', views.profile_view, name='profile'),
     
 
 ] 

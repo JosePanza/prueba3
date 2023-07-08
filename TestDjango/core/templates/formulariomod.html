@@ -1,38 +1,21 @@
-{% extends "./base.html" %}
-{% load static %}
-{% block title %} Modificar {% endblock %}
-
+{% extends './base.html' %}
+{% block title %} Editar|REG {% endblock %}
 {% block body %}
 
+    <div class="col-sm-12">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong class="text-dark">{{ message }}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
 
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Actualizar artistas</title>
-</head>
-<body>
-    <h1>Actualizar artistas</h1>
-    <form method="post" action="{% url 'formulariomod'%}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="text" name="ID_usuario" value="{{ usuario.ID_usuario }}">
-        
-        
-        <label for="nombre_usuario  ">nombre_usuario:</label>
-        <input type="text" name="nombre_artista" value= "{{ usuario.nombre_artista }}">
-        
-        <label for="descripcion">Descripción:</label>
-        <textarea name="descripcion">{{ usuario.descripcion }}</textarea>
-        
-        <label for="img">img:</label>
-        <input type="file" name="img">
-        
-       
-        
-        <button type="submit">Guardar</button>
-      </form>
-</body>
-</html>
+            <h1>Editar Registro</h1>
+            <div class="container form">
+                {% include 'form.html' %}
+            </div>
+    </div>
 
 {% endblock %}

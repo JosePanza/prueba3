@@ -1,4 +1,4 @@
-{% extends "./base.html" %}
+{% extends './base.html' %}
 
 {% block title %} crear {% endblock %}
 
@@ -8,10 +8,10 @@
 <!DOCTYPE html>
 <br>
 <head>
-    <title>Agregar artista</title>
+    <title>Agregar Producto</title>
 </head>
 <body>
-    <h1>Agregar artista</h1>
+    <h1>Agregar producto y artista</h1>
     <form method="post" action="{% url 'formulariocreate' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <br></br>
