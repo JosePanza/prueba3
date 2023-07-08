@@ -15,7 +15,7 @@ urlpatterns = [
     path('martina', views.martina, name='martina'),   
     path('sofia', views.sofia, name='sofia'),  
     path('artistas', views.artistas, name='artistas'),
-    path('productos', views.productos, name='productos'),
+    
 
     #crud
     path('formulariolist/', views.formulariolist, name='formulariolist'),
@@ -30,5 +30,5 @@ urlpatterns = [
     path('accounts/profile/', views.profile_view, name='profile'),
     
 
-] 
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

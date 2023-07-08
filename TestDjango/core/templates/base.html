@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %} {% endblock %}</title>
 
+    <style>
+      #clock {
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 100px;
+      }
+    </style>
+
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
 
@@ -54,6 +63,8 @@
           <div class="menu col-lg-8 col-md-7 collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto text-center mb-2 mb-lg-0">
   
+              
+
               <li class="nav-item">
                 <a class="nav-link active " aria-current="page" href="{% url 'index'%}">Home</a>
               </li>
@@ -89,7 +100,28 @@
         </div>
       </nav>
     </header>
+    <div id="clock"></div>
+  <script>
+    function updateClock() {
+      var clock = document.getElementById('clock');
+      var currentTime = new Date();
 
+      var hours = formatTimeUnit(currentTime.getHours());
+      var minutes = formatTimeUnit(currentTime.getMinutes());
+      var seconds = formatTimeUnit(currentTime.getSeconds());
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+      clock.innerHTML = timeString;
+    }
+
+    function formatTimeUnit(timeUnit) {
+      return (timeUnit < 10 ? "0" : "") + timeUnit;
+    }
+
+    setInterval(updateClock, 1000);
+  </script>
+
+    
      
     {% block body %} 
 
