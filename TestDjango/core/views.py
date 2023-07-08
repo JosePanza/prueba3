@@ -11,6 +11,20 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 
 
+@login_required
+def profile_view(request):
+   
+    user = request.user  
+    
+   
+    
+    context = {
+        'user': user,
+        
+    }
+    
+    return render(request, 'profile.html', context)
+
 
 # Create your views here.
 
@@ -33,6 +47,8 @@ def productos(request):
     return render(request, 'productos.html')
 
 
+
+
 def formulariolist(request):
     artistas = usuario.objects.all()
     messages.success(request, '¡artistas Listados!')
@@ -44,8 +60,9 @@ def formulariolist(request):
 def formulariocreate(request):
     usuario = usuariosform(request.POST or None, request.FILES or None)
     if usuario.is_valid():
-       usuario.save()
-       return redirect('formulariocreate')
+        usuario.save()
+        messages.success(request,'¡artistas agregado!')
+        return redirect('formulariocreate')
     return render(request, "formulariocreate.html", {"artistas": artistas})
 
 
@@ -55,23 +72,19 @@ def formulariocreate(request):
 
 def formulariomod(request, ID_usuario):
     artistas = usuario.objects.get(ID_usuario=ID_usuario)
-    usuario = usuariosform(request.POST or None, request.FILES or None, instance=artistas)
-    if usuario.is_valid() and request.method == 'POST':
-        usuario.save()
+    formulario = usuariosform(request.POST or None, request.FILES or None, instance=artistas)
+    if formulario.is_valid() and request.method == 'POST':
+        formulario.save()
         return redirect('formulariomod')
-    return render(request, "formulariomod.html", {"formulario": artistas})
+    return render(request, "formulariomod.html", {"artista": artistas})
 
 
 
 
-def formulariodelete(request, ID_usuario):
-    artistas = usuario.objects.get(ID_usuario=ID_usuario)
-    usuario.delete()
-    messages.success(request, '¡Artículo Eliminado!')
-    return redirect(request, 'formulariodelete.html')
 
-def borrarservicio(request, ID_servicio):
-    servicios = Servicios.objects.get(ID_servicio = ID_servicio)
-    servicios.delete()
-    messages.success(request, '¡Servicio Eliminado!')
-    return redirect('gestionser')
+
+def formulariodelete(request):
+    artistas = usuario.objects.filter()
+    artistas.delete()
+    messages.success(request, '¡artista Eliminado!')
+    return render(request, 'formulariodelete.html', {'artistas': artistas})

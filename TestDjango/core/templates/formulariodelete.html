@@ -1,21 +1,22 @@
 {% extends "./base.html" %}
-
+{% load static %}
 {% block title %} eliminar {% endblock %}
 
 {% block body %}
-{% load static %}
+
 
 
 <h1>Eliminar Artista</h1>
 <p>¿Estás seguro de que deseas eliminar este artista?</p>
 <p>ID Usuario:{{ usuario.ID_usuario }}
-<p>Nombre del Artista: {{ usuario.nombre_usuario }}</p>
-<p>Descripción: {{ usuario.descripcion }}</p>
-<p>Imagen: {{ usuario.img }}</p>
+<input type="text" name="ID_usuario" required><br></br>
+
+
 
 <form action="{% url 'formulariodelete' %}" method="POST">
   {% csrf_token %}
   <input type="hidden" name="ID_usuario" value="{{ ID_usuario }}">
-  <button type="submit">Eliminar</button>
+ 
+  <button type="submit" class="btn btn-primary">Eliminar</button>
 </form>
 {% endblock %}

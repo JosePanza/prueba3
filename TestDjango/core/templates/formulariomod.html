@@ -1,9 +1,11 @@
 {% extends "./base.html" %}
-
+{% load static %}
 {% block title %} Modificar {% endblock %}
 
 {% block body %}
-{% load static %}
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -11,16 +13,22 @@
     <title>Actualizar artistas</title>
 </head>
 <body>
-    <h1>mod</h1>
+    <h1>Actualizar artistas</h1>
     <form method="post" action="{% url 'formulariomod'%}" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="text" name="ID_usuario" value="{{ ID_usuario }}">
-        
-        <label for="nombre_usuario">nombre_artista:</label>
-        <input type="text" name="nombre_usuario" value= "{{ usuario.nombre_usuario }}">
+        <input type="text" name="ID_usuario" value="{{ usuario.ID_usuario }}">
         
         
+        <label for="nombre_usuario  ">nombre_usuario:</label>
+        <input type="text" name="nombre_artista" value= "{{ usuario.nombre_artista }}">
         
+        <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion">{{ usuario.descripcion }}</textarea>
+        
+        <label for="img">img:</label>
+        <input type="file" name="img">
+        
+       
         
         <button type="submit">Guardar</button>
       </form>

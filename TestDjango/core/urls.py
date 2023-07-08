@@ -18,11 +18,12 @@ urlpatterns = [
     path('productos', views.productos, name='productos'),
 
     #crud
-    path('formulariolist', views.formulariolist, name='formulariolist'),
-    path('formulariocreate', views.formulariocreate, name='formulariocreate'),
-    path('formulariomod', views.formulariomod, name='formulariomod'),
-    path('formulariodelete', views.formulariodelete, name='formulariodelete')
+    path('formulariolist/', views.formulariolist, name='formulariolist'),
+    path('formulariocreate/', views.formulariocreate, name='formulariocreate'),
+    path('formulariomod/', views.formulariomod, name='formulariomod'),
+    path('formulariodelete/', views.formulariodelete, name='formulariodelete'),
 
+    
     
 
 ] 

@@ -1,5 +1,7 @@
-from typing import Any, Dict, Tuple
+from distutils.command.upload import upload
+from pyexpat import model
 from django.db import models
+from typing import Any,Dict, Tuple
 
 
 # Create your models here.
@@ -12,4 +14,4 @@ class usuario(models.Model):
 
 
     def __str__(self):
-        return str(self.nombre_usuario)
+        return str(self.ID_usuario)
